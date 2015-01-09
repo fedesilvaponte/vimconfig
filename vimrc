@@ -22,6 +22,8 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'claco/jasmine.vim'
 "Bundle 'cakebaker/scss-syntax.vim'
 "Bundle 'ervandew/supertab'
 "Bundle 'gmarik/sudo-gui.vim'
@@ -117,6 +119,8 @@ nmap <leader><TAB> :FufBuffer<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#left_sep = ' '
+
+let g:used_javascript_libs = 'underscore,angularjs,requirejs,jasmine,jquery'
 
 let g:syntastic_eslint_exec='/usr/local/bin/eslint'
 let g:syntastic_javascript_checkers = ['eslint']
