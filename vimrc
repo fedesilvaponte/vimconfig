@@ -17,6 +17,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'Chiel92/vim-autoformat'
 Bundle "nathanaelkane/vim-indent-guides"
 Bundle 'Raimondi/delimitMate'
 Bundle 'airblade/vim-gitgutter'
@@ -69,9 +70,9 @@ set showbreak=>
 set laststatus=2             " Status line for vim airline
 
 " Tabulaciones
-  set tabstop=2
-  set shiftwidth=2
-  set softtabstop=2
+  set tabstop=4
+  set shiftwidth=4
+  set softtabstop=4
   set expandtab
 
 " Mejores búsquedas
@@ -86,6 +87,8 @@ endif
 
 set linespace=2
 set antialias
+set spelllang=es
+" set spelllang=en
 
 " ----------- Mappings ---------------
 
@@ -110,10 +113,14 @@ nmap <space> :
   imap <TAB> <C-n>
 " Cambiar al buffer reciente
   nmap <leader>b :b#<cr>
+"Spelling check
+nmap <silent> <leader>s :set spell!<CR>
 
 " ----------- Plugin Mappings ----------
 nmap <TAB> :NERDTreeToggle<CR>
 nmap <leader><TAB> :FufBuffer<CR>
+"Autoformat all the code
+nmap <leader>fc :Autoformat<cr>
 
 " ----------- Plugin Config ------------
 let g:airline#extensions#tabline#enabled = 1
