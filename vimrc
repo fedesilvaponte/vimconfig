@@ -18,6 +18,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Chiel92/vim-autoformat'
+Bundle 'ctrlp.vim'
 Bundle "nathanaelkane/vim-indent-guides"
 Bundle 'Raimondi/delimitMate'
 Bundle 'airblade/vim-gitgutter'
@@ -81,9 +82,9 @@ set laststatus=2             " Status line for vim airline
   set smartcase
 
 " Source the vimrc file after saving it. This way, you don't have to reload Vim to see the changes.
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
+" if has("autocmd")
+"   autocmd bufwritepost .vimrc source $MYVIMRC
+" endif
 
 set linespace=2
 set antialias
@@ -121,8 +122,16 @@ nmap <TAB> :NERDTreeToggle<CR>
 nmap <leader><TAB> :FufBuffer<CR>
 "Autoformat all the code
 nmap <leader>fc :Autoformat<cr>
+let g:ctrlp_map = '<c-p>'
 
 " ----------- Plugin Config ------------
+let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|)$'
+" let g:ctrlp_custom_ignore = '\v[\/](bower_components|node_modules)$'
+set wildignore+=*/tmp/*,*/logs/*,*/bower_components/*,*/node_modules/*,*.so,*.swp,*.zip     " Linux/MacOSX
+" set wildignore+=*\\tmp\\*,*\logs\*,*\bower_components\*,*\node_modules\*,*.swp,*.zip,*.exe  " Windows
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#left_sep = ' '
