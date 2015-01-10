@@ -19,6 +19,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Chiel92/vim-autoformat'
 Bundle 'vimoutliner/vimoutliner'
 Bundle 'SirVer/ultisnips'
+Bundle 'mattn/emmet-vim'
 Bundle 'ctrlp.vim'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'dbakker/vim-projectroot'
@@ -44,7 +45,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-endwise'
-"Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/Enter-Indent'
 Bundle 'vim-scripts/L9'
 "Bundle 'xolox/vim-session'
@@ -76,15 +77,15 @@ set showbreak=
 set laststatus=2             " Status line for vim airline
 
 " Tabulaciones
-  set tabstop=4
-  set shiftwidth=4
-  set softtabstop=4
-  set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
 " Mejores búsquedas
-  set incsearch
-  set ignorecase
-  set smartcase
+set incsearch
+set ignorecase
+set smartcase
 
 " Source the vimrc file after saving it. This way, you don't have to reload Vim to see the changes.
 " if has("autocmd")
@@ -103,25 +104,25 @@ nmap j gj
 nmap k gk
 nmap <space> :
 "Guardado rápido
-  nmap <C-s> :w!<cr>
-  imap <C-s> jj :w!<cr>
+nmap <C-s> :w!<cr>
+imap <C-s> jj :w!<cr>
 " Cambiar el search
-  nmap ff /
+nmap ff /
 "Cambiar command mode
-  imap jj <esc>
+imap jj <esc>
 " Mover la linea hacia abajo y arriba
-  nmap <C-k> :m-2<cr>
-  nmap <C-j> :m+<cr>
+nmap <C-k> :m-2<cr>
+nmap <C-j> :m+<cr>
 "Shortcut for editing  vimrc file in a new tab
-  nmap ,ev :edit $MYVIMRC<cr>
+nmap ,ev :edit $MYVIMRC<cr>
 " easier window navigation
-  nmap <C-h> <C-w>h
-  nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
 " Para autocomplete
-  " imap <TAB> <C-n>
+imap <TAB> <C-n>
 " Cambiar al buffer reciente
-  nmap <leader>b :b#<cr>
-"Spelling check
+nmap <leader>b :b#<cr>
+"spelling check
 nmap <silent> <leader>s :set spell!<CR>
 nmap <leader>g :vim /<C-r><C-w>/ **/*.js
 
