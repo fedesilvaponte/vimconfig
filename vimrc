@@ -1,4 +1,3 @@
-" Defaults 
 set number                        " Mostrar números de linea
 set hidden                        " Mejor manejo de buffers
 set nocompatible                  " sin compatibilidad con vi 
@@ -18,8 +17,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Chiel92/vim-autoformat'
+Bundle 'vimoutliner/vimoutliner'
+Bundle 'SirVer/ultisnips'
 Bundle 'ctrlp.vim'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'dbakker/vim-projectroot'
+Bundle 'altercation/vim-colors-solarized'
 Bundle "nathanaelkane/vim-indent-guides"
+Bundle 'dkprice/vim-easygrep'
 Bundle 'Raimondi/delimitMate'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
@@ -67,7 +72,7 @@ filetype plugin on
 filetype indent on
 "Las lineas cortadas tienen indicador
 set wrap linebreak nolist
-set showbreak=> 
+set showbreak=
 set laststatus=2             " Status line for vim airline
 
 " Tabulaciones
@@ -94,6 +99,8 @@ set spelllang=es
 " ----------- Mappings ---------------
 
 let mapleader = ","          " Cambiar el map leader
+nmap j gj
+nmap k gk
 nmap <space> :
 "Guardado rápido
   nmap <C-s> :w!<cr>
@@ -111,11 +118,12 @@ nmap <space> :
   nmap <C-h> <C-w>h
   nmap <C-l> <C-w>l
 " Para autocomplete
-  imap <TAB> <C-n>
+  " imap <TAB> <C-n>
 " Cambiar al buffer reciente
   nmap <leader>b :b#<cr>
 "Spelling check
 nmap <silent> <leader>s :set spell!<CR>
+nmap <leader>g :vim /<C-r><C-w>/ **/*.js
 
 " ----------- Plugin Mappings ----------
 nmap <TAB> :NERDTreeToggle<CR>
@@ -123,6 +131,9 @@ nmap <leader><TAB> :FufBuffer<CR>
 "Autoformat all the code
 nmap <leader>fc :Autoformat<cr>
 let g:ctrlp_map = '<c-p>'
+" nnoremap <leader>g :ProjectRootExe grep -F<space>
+nmap <leader>m :DoShowMarks<CR>
+nmap <leader>mn :NoShowMarks<CR>
 
 " ----------- Plugin Config ------------
 let g:ctrlp_working_path_mode = 'ra'
@@ -132,9 +143,22 @@ set wildignore+=*/tmp/*,*/logs/*,*/bower_components/*,*/node_modules/*,*.so,*.sw
 " set wildignore+=*\\tmp\\*,*\logs\*,*\bower_components\*,*\node_modules\*,*.swp,*.zip,*.exe  " Windows
 " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#left_sep = ' '
+"Automatically change the wd to the project root
+function! <SID>AutoProjectRootCD()
+  try
+    if &ft != 'help'
+      ProjectRootCD
+    endif
+  catch
+    " Silently ignore invalid buffers
+  endtry
+endfunction
+
+autocmd BufEnter * call <SID>AutoProjectRootCD()
+
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#left_sep = ' '
 
 let g:used_javascript_libs = 'underscore,angularjs,requirejs,jasmine,jquery'
 
