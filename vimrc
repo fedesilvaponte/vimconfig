@@ -18,6 +18,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Chiel92/vim-autoformat'
 Bundle 'vimoutliner/vimoutliner'
+Bundle 'briancollins/vim-jst'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'pangloss/vim-javascript'
+Bundle 'sickill/vim-monokai'
 Bundle 'SirVer/ultisnips'
 Bundle 'mattn/emmet-vim'
 Bundle 'ctrlp.vim'
@@ -37,8 +41,12 @@ Bundle 'claco/jasmine.vim'
 "Bundle 'gmarik/sudo-gui.vim'
 "Bundle 'itspriddle/vim-jquery'
 Bundle 'jacquesbh/vim-showmarks'
+Bundle 'groenewege/vim-less'
 "Bundle 'mirell/vim-matchit'
-"Bundle 'msanders/snipmate.vim'
+"Snipmate
+" Bundle "MarcWeber/vim-addon-mw-utils"
+" Bundle "tomtom/tlib_vim"
+" Bundle 'msanders/snipmate.vim'
 Bundle 'nanotech/jellybeans.vim'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'scrooloose/nerdtree'
@@ -81,6 +89,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+autocmd Filetype jade setlocal ts=2 sts=2 sw=2
 
 " Mejores búsquedas
 set incsearch
@@ -119,7 +128,7 @@ nmap ,ev :edit $MYVIMRC<cr>
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
 " Para autocomplete
-imap <TAB> <C-n>
+" imap <TAB> <C-n>
 " Cambiar al buffer reciente
 nmap <leader>b :b#<cr>
 "spelling check
@@ -138,6 +147,8 @@ nmap <leader>mn :NoShowMarks<CR>
 
 " ----------- Plugin Config ------------
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_max_height = 8
 " let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|)$'
 " let g:ctrlp_custom_ignore = '\v[\/](bower_components|node_modules)$'
 set wildignore+=*/tmp/*,*/logs/*,*/bower_components/*,*/node_modules/*,*.so,*.swp,*.zip     " Linux/MacOSX
@@ -168,3 +179,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+"mapping for emmet
+imap ., <C-y>,
+
+" ---------------- Macros ------------
+imap f<TAB> ();
