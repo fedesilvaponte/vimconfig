@@ -1,6 +1,82 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+
+" ======================= Vundle Config =======================
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" ------------- Helpers --------------- 
+Bundle 'jacquesbh/vim-showmarks'
+Bundle 'mattn/emmet-vim'
+Bundle "Yggdroot/indentLine"
+Bundle 'Raimondi/delimitMate'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
+Bundle 'vimoutliner/vimoutliner'
+Bundle 'vim-scripts/bufkill.vim'
+
+" ------------- Snipmate ----------------
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle 'msanders/snipmate.vim'
+
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/L9'
+" ------------ Syntax Related ------------ 
+Bundle 'scrooloose/syntastic'
+Bundle 'vim-scripts/Enter-Indent'
+Bundle 'groenewege/vim-less'
+Plugin 'Chiel92/vim-autoformat'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'briancollins/vim-jst'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'plasticboy/vim-markdown'
+
+"------------- File navigation -----------
+Bundle "vim-scripts/FuzzyFinder"
+Bundle 'scrooloose/nerdtree'
+Bundle 'dkprice/vim-easygrep'
+Bundle 'pangloss/vim-javascript'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'claco/jasmine.vim'
+Bundle 'ctrlp.vim'
+Bundle 'dbakker/vim-projectroot'
+
+"-------------- Color Schemes ------------ 
+" Bundle 'nanotech/jellybeans.vim'
+" Bundle 'altercation/vim-colors-solarized'
+Bundle 'sickill/vim-monokai'
+" ------------- Unused --------------------
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'xolox/vim-session'
+" Bundle 'SirVer/ultisnips'
+"Bundle 'cakebaker/scss-syntax.vim'
+"Bundle 'ervandew/supertab'
+"Bundle 'gmarik/sudo-gui.vim'
+"Bundle 'itspriddle/vim-jquery'
+"Bundle 'mirell/vim-matchit'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+let g:syntastic_check_on_open=1
+let g:syntastic_javascript_checkers = ['jshint']
+
+" ==========================================================
+filetype on
+filetype plugin on
+filetype indent on
+
 set number                        " Mostrar números de linea
 set hidden                        " Mejor manejo de buffers
-set nocompatible                  " sin compatibilidad con vi 
 set go-=T                         " Borrar la barra de menu
 syntax on                         " Activar el resaltado de sintaxis
 "set lines=45 columns=150          " Window dimensions.
@@ -8,81 +84,27 @@ set guioptions-=r                 " Don't show right scrollbar
 set wildmenu
 set wildmode=list:longest         " Completar nombres de archivos
 set smartindent
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Chiel92/vim-autoformat'
-Bundle 'vimoutliner/vimoutliner'
-Bundle 'briancollins/vim-jst'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'pangloss/vim-javascript'
-Bundle 'sickill/vim-monokai'
-Bundle 'SirVer/ultisnips'
-Bundle 'mattn/emmet-vim'
-Bundle 'ctrlp.vim'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'dbakker/vim-projectroot'
-Bundle 'altercation/vim-colors-solarized'
-Bundle "nathanaelkane/vim-indent-guides"
-Bundle 'dkprice/vim-easygrep'
-Bundle 'Raimondi/delimitMate'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'othree/javascript-libraries-syntax.vim'
-Bundle 'claco/jasmine.vim'
-"Bundle 'cakebaker/scss-syntax.vim'
-"Bundle 'ervandew/supertab'
-"Bundle 'gmarik/sudo-gui.vim'
-"Bundle 'itspriddle/vim-jquery'
-Bundle 'jacquesbh/vim-showmarks'
-Bundle 'groenewege/vim-less'
-"Bundle 'mirell/vim-matchit'
-"Snipmate
-" Bundle "MarcWeber/vim-addon-mw-utils"
-" Bundle "tomtom/tlib_vim"
-" Bundle 'msanders/snipmate.vim'
-Bundle 'nanotech/jellybeans.vim'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/Enter-Indent'
-Bundle 'vim-scripts/L9'
-"Bundle 'xolox/vim-session'
-Bundle "vim-scripts/LustyExplorer"
-Bundle "vim-scripts/FuzzyFinder"
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-let g:syntastic_check_on_open=1
-let g:syntastic_javascript_checkers = ['jshint']
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
 set autoindent
 set encoding=utf-8
-filetype on
-filetype plugin on
-filetype indent on
+
 "Las lineas cortadas tienen indicador
 set wrap linebreak nolist
 set showbreak=
 set laststatus=2             " Status line for vim airline
+set noswapfile                    " Remove swap files
+
+" performance test
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
+let g:loaded_matchparen = 1
+
+"Ever notice a slight lag after typing the leader key + command? This lowers the timeout.
+set timeoutlen=500
+" NOTE: use arrow keys for quick buffer/window navigation                                             
+" switch to the previous buffer
+noremap <silent> <left> :bprevious<cr>
+noremap <silent> <right> :bnext<cr>
 
 " Tabulaciones
 set tabstop=4
@@ -127,28 +149,38 @@ nmap ,ev :edit $MYVIMRC<cr>
 " easier window navigation
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
+"indentar en insert mode
+imap <S-Tab> <C-t>
 " Para autocomplete
-" imap <TAB> <C-n>
+imap <TAB> <C-n>
 " Cambiar al buffer reciente
 nmap <leader>b :b#<cr>
 "spelling check
 nmap <silent> <leader>s :set spell!<CR>
-nmap <leader>g :vim /<C-r><C-w>/ **/*.js
+"Search using easygrep
+nmap <leader>g :vim /<C-r><C-w>/ **/*.js<C-B><C-right><C-right><left>
+"Source VIM
+nmap <leader>sv :source $MYVIMRC<cr>
+nmap <leader>svg :source $MYGVIMRC<cr>
 
 " ----------- Plugin Mappings ----------
 nmap <TAB> :NERDTreeToggle<CR>
 nmap <leader><TAB> :FufBuffer<CR>
 "Autoformat all the code
 nmap <leader>fc :Autoformat<cr>
-let g:ctrlp_map = '<c-p>'
 " nnoremap <leader>g :ProjectRootExe grep -F<space>
 nmap <leader>m :DoShowMarks<CR>
 nmap <leader>mn :NoShowMarks<CR>
+"mapping for emmet
+imap <leader>e <C-y>,
+"buffkill
+nmap <leader>d :BD<cr>
 
 " ----------- Plugin Config ------------
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 8
+let g:ctrlp_map = '<c-p>'
 " let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|)$'
 " let g:ctrlp_custom_ignore = '\v[\/](bower_components|node_modules)$'
 set wildignore+=*/tmp/*,*/logs/*,*/bower_components/*,*/node_modules/*,*.so,*.swp,*.zip     " Linux/MacOSX
@@ -168,9 +200,9 @@ endfunction
 
 autocmd BufEnter * call <SID>AutoProjectRootCD()
 
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-" let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#left_sep = ' '
 
 let g:used_javascript_libs = 'underscore,angularjs,requirejs,jasmine,jquery'
 
@@ -179,8 +211,3 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-"mapping for emmet
-imap ., <C-y>,
-
-" ---------------- Macros ------------
-imap f<TAB> ();
