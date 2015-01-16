@@ -23,6 +23,7 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/L9'
 Bundle 'SirVer/ultisnips'
+Bundle 'terryma/vim-multiple-cursors'
 
 " ------------- Snipmate ----------------
 " Bundle 'MarcWeber/vim-addon-mw-utils'
