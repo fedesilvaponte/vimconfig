@@ -75,6 +75,8 @@ filetype plugin on
 filetype indent on
 syntax on                         " Activar el resaltado de sintaxis
 
+set backspace=2                  "Make backspace work on windows
+
 set number                      " Mostrar números de linea
 " set relativenumber                " Mostrar numeros de linea relativos
 set hidden                        " Mejor manejo de buffers
@@ -119,6 +121,7 @@ set smartcase
 set linespace=2
 set antialias
 set spelllang=es
+set shell=/bin/bash
 " set spelllang=en
 
 " ----------- Mappings ---------------
@@ -169,6 +172,9 @@ imap <leader>e <C-y>,
 "buffkill
 nmap <leader>d :BD<cr>
 let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " ----------- Plugin Config ------------
 let g:ctrlp_working_path_mode = 'ra'
@@ -205,4 +211,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" Gdiff vertical
+set diffopt+=vertical
 
