@@ -1,7 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-
 " ======================= Vundle Config =======================
 
 " set the runtime path to include Vundle and initialize
@@ -14,22 +13,22 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'jacquesbh/vim-showmarks'
 Bundle 'mattn/emmet-vim'
 Bundle "Yggdroot/indentLine"
-Bundle 'Raimondi/delimitMate'
+Bundle 'Raimondi/delimitMate' 
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vimoutliner/vimoutliner'
 Bundle 'vim-scripts/bufkill.vim'
-
-" ------------- Snipmate ----------------
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle 'msanders/snipmate.vim'
-
 Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/L9'
+Bundle 'SirVer/ultisnips'
+
+" ------------- Snipmate ----------------
+" Bundle 'MarcWeber/vim-addon-mw-utils'
+" Bundle 'tomtom/tlib_vim'
+" Bundle 'msanders/snipmate.vim'
+
 " ------------ Syntax Related ------------ 
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/Enter-Indent'
@@ -39,14 +38,14 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'briancollins/vim-jst'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'plasticboy/vim-markdown'
-
-"------------- File navigation -----------
-Bundle "vim-scripts/FuzzyFinder"
-Bundle 'scrooloose/nerdtree'
-Bundle 'dkprice/vim-easygrep'
 Bundle 'pangloss/vim-javascript'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'claco/jasmine.vim'
+
+"------------- File navigation -----------
+Bundle 'vim-scripts/FuzzyFinder'
+Bundle 'scrooloose/nerdtree'
+Bundle 'dkprice/vim-easygrep'
 Bundle 'ctrlp.vim'
 Bundle 'dbakker/vim-projectroot'
 
@@ -57,7 +56,6 @@ Bundle 'sickill/vim-monokai'
 " ------------- Unused --------------------
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 "Bundle 'xolox/vim-session'
-" Bundle 'SirVer/ultisnips'
 "Bundle 'cakebaker/scss-syntax.vim'
 "Bundle 'ervandew/supertab'
 "Bundle 'gmarik/sudo-gui.vim'
@@ -71,15 +69,17 @@ let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['jshint']
 
 " ==========================================================
+
 filetype on
 filetype plugin on
 filetype indent on
+syntax on                         " Activar el resaltado de sintaxis
 
-set number                        " Mostrar números de linea
+set number                      " Mostrar números de linea
+" set relativenumber                " Mostrar numeros de linea relativos
 set hidden                        " Mejor manejo de buffers
 set go-=T                         " Borrar la barra de menu
-syntax on                         " Activar el resaltado de sintaxis
-"set lines=45 columns=150          " Window dimensions.
+"set lines=45 columns=150         " Window dimensions.
 set guioptions-=r                 " Don't show right scrollbar
 set wildmenu
 set wildmode=list:longest         " Completar nombres de archivos
@@ -87,10 +87,9 @@ set smartindent
 set autoindent
 set encoding=utf-8
 
-"Las lineas cortadas tienen indicador
+set showbreak=                    "Las lineas cortadas tienen indicador
 set wrap linebreak nolist
-set showbreak=
-set laststatus=2             " Status line for vim airline
+set laststatus=2                  " Status line for vim airline
 set noswapfile                    " Remove swap files
 
 " performance test
@@ -102,7 +101,6 @@ let g:loaded_matchparen = 1
 "Ever notice a slight lag after typing the leader key + command? This lowers the timeout.
 set timeoutlen=500
 " NOTE: use arrow keys for quick buffer/window navigation                                             
-" switch to the previous buffer
 noremap <silent> <left> :bprevious<cr>
 noremap <silent> <right> :bnext<cr>
 
@@ -118,11 +116,6 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Source the vimrc file after saving it. This way, you don't have to reload Vim to see the changes.
-" if has("autocmd")
-"   autocmd bufwritepost .vimrc source $MYVIMRC
-" endif
-
 set linespace=2
 set antialias
 set spelllang=es
@@ -134,8 +127,8 @@ let mapleader = ","          " Cambiar el map leader
 nmap j gj
 nmap k gk
 nmap <space> :
-"Guardado rápido
 nmap <C-s> :w!<cr>
+"Guardado rápido
 imap <C-s> jj :w!<cr>
 " Cambiar el search
 nmap ff /
@@ -152,7 +145,7 @@ nmap <C-l> <C-w>l
 "indentar en insert mode
 imap <S-Tab> <C-t>
 " Para autocomplete
-imap <TAB> <C-n>
+" imap <TAB> <C-n>
 " Cambiar al buffer reciente
 nmap <leader>b :b#<cr>
 "spelling check
@@ -164,8 +157,8 @@ nmap <leader>sv :source $MYVIMRC<cr>
 nmap <leader>svg :source $MYGVIMRC<cr>
 
 " ----------- Plugin Mappings ----------
-nmap <TAB> :NERDTreeToggle<CR>
-nmap <leader><TAB> :FufBuffer<CR>
+nmap <leader><TAB> :NERDTreeToggle<CR>
+map <TAB> :FufBuffer<CR>
 "Autoformat all the code
 nmap <leader>fc :Autoformat<cr>
 " nnoremap <leader>g :ProjectRootExe grep -F<space>
@@ -175,6 +168,7 @@ nmap <leader>mn :NoShowMarks<CR>
 imap <leader>e <C-y>,
 "buffkill
 nmap <leader>d :BD<cr>
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " ----------- Plugin Config ------------
 let g:ctrlp_working_path_mode = 'ra'
@@ -200,14 +194,15 @@ endfunction
 
 autocmd BufEnter * call <SID>AutoProjectRootCD()
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#left_sep = ' '
 
-let g:used_javascript_libs = 'underscore,angularjs,requirejs,jasmine,jquery'
+let g:used_javascript_libs = 'underscore,angularjs,requirejs,jquery'
 
 let g:syntastic_eslint_exec='/usr/local/bin/eslint'
 let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
