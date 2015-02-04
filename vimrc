@@ -24,6 +24,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/L9'
 Bundle 'SirVer/ultisnips'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'xolox/vim-session'
+Bundle 'xolox/vim-misc'
 
 " ------------- Snipmate ----------------
 " Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -122,7 +124,6 @@ set smartcase
 set linespace=2
 set antialias
 set spelllang=es
-set shell=/bin/bash
 " set spelllang=en
 
 " ----------- Mappings ---------------
@@ -149,9 +150,11 @@ nmap <C-l> <C-w>l
 "indentar en insert mode
 imap <S-Tab> <C-t>
 " Para autocomplete
-" imap <TAB> <C-n>
+imap <TAB> <C-n>
 " Cambiar al buffer reciente
 nmap <leader>b :b#<cr>
+nmap <leader>n :bnext<CR>
+nmap <leader>p :bprev<CR>
 "spelling check
 nmap <silent> <leader>s :set spell!<CR>
 "Search using easygrep
@@ -161,8 +164,11 @@ nmap <leader>sv :source $MYVIMRC<cr>
 nmap <leader>svg :source $MYGVIMRC<cr>
 
 " ----------- Plugin Mappings ----------
-nmap <leader><TAB> :NERDTreeToggle<CR>
-map <TAB> :FufBuffer<CR>
+nmap <TAB> :NERDTreeToggle<CR>
+map <leader><TAB> :FufBuffer<CR>
+"abrir session
+nmap <C-O> :OpenSession 
+" map <leader>b :CtrlPBuffer<CR>
 "Autoformat all the code
 nmap <leader>fc :Autoformat<cr>
 " nnoremap <leader>g :ProjectRootExe grep -F<space>
@@ -178,6 +184,16 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " ----------- Plugin Config ------------
+" Sesiones
+let g:session_autoload='no'
+let g:session_autosave='yes'
+let g:session_directory="~/Copy/configs/vim/sessions"
+let g:session_default_to_last=1
+set sessionoptions-=tabpages
+
+" set sessionoptions-=help
+set sessionoptions-=resize,winpos
+set sessionoptions-=option 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 8
@@ -207,8 +223,8 @@ autocmd BufEnter * call <SID>AutoProjectRootCD()
 
 let g:used_javascript_libs = 'underscore,angularjs,requirejs,jquery'
 
-let g:syntastic_eslint_exec='/usr/local/bin/eslint'
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_eslint_exec='/usr/local/bin/eslint'
+" let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
