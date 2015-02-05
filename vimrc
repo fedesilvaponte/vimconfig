@@ -24,7 +24,10 @@ Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/L9'
 Bundle 'SirVer/ultisnips'
 Bundle 'terryma/vim-multiple-cursors'
-
+Bundle 'mileszs/ack.vim'
+"Vim session
+Bundle 'xolox/vim-session'
+Bundle 'xolox/vim-misc'
 " ------------- Snipmate ----------------
 " Bundle 'MarcWeber/vim-addon-mw-utils'
 " Bundle 'tomtom/tlib_vim'
@@ -56,7 +59,6 @@ Bundle 'dbakker/vim-projectroot'
 Bundle 'sickill/vim-monokai'
 " ------------- Unused --------------------
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'xolox/vim-session'
 "Bundle 'cakebaker/scss-syntax.vim'
 "Bundle 'ervandew/supertab'
 "Bundle 'gmarik/sudo-gui.vim'
@@ -129,6 +131,8 @@ set shell=/bin/bash
 
 let mapleader = ","          " Cambiar el map leader
 nmap j gj
+" Auto add semicolon
+inoremap ;<TAB> <end>;<cr>
 nmap k gk
 nmap <space> :
 nmap <C-s> :w!<cr>
@@ -155,12 +159,15 @@ nmap <leader>b :b#<cr>
 "spelling check
 nmap <silent> <leader>s :set spell!<CR>
 "Search using easygrep
-nmap <leader>g :vim /<C-r><C-w>/ **/*.js<C-B><C-right><C-right><left>
+nmap <leader>s :Ack <C-r><C-w> --type=js<C-B><C-right><C-right><left>
 "Source VIM
 nmap <leader>sv :source $MYVIMRC<cr>
 nmap <leader>svg :source $MYGVIMRC<cr>
 
 " ----------- Plugin Mappings ----------
+"abrir session
+nmap <C-O> :OpenSession 
+
 nmap <leader><TAB> :NERDTreeToggle<CR>
 map <TAB> :FufBuffer<CR>
 "Autoformat all the code
@@ -207,9 +214,18 @@ autocmd BufEnter * call <SID>AutoProjectRootCD()
 
 let g:used_javascript_libs = 'underscore,angularjs,requirejs,jquery'
 
+" Sesiones
+let g:session_autoload='yes'
+let g:session_autosave='yes'
+let g:session_directory="~/Copy/configuraciones/vim/sessions"
+let g:session_default_to_last=1
+set sessionoptions-=tabpages
+set sessionoptions-=resize,winpos
+set sessionoptions-=option 
+
+
 let g:syntastic_eslint_exec='/usr/local/bin/eslint'
 let g:syntastic_javascript_checkers = ['eslint']
-
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Gdiff vertical
