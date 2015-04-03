@@ -119,10 +119,12 @@ set sessionoptions-=option
 
 let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_eslint_exec='/usr/local/bin/eslint'
+let g:syntastic_eslint_exec='/usr/loca/bin/eslint'
 let g:syntastic_javascript_checkers = ['jshint']
 " let g:syntastic_eslint_exec='/usr/local/bin/eslint'
 " let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
